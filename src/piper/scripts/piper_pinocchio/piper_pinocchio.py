@@ -215,7 +215,7 @@ class Arm_IK:
 
     def get_ik_solution(self, x,y,z,roll,pitch,yaw):
         
-        q = quaternion_from_euler(roll, pitch, yaw, axes='rzyx')
+        q = quaternion_from_euler(roll, pitch, yaw, axes='sxyz')
         target = pin.SE3(
             pin.Quaternion(q[3], q[0], q[1], q[2]),
             np.array([x, y, z]),
