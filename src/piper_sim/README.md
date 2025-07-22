@@ -31,7 +31,7 @@ source devel/setup.bash
 ```
 
 ```bash
-roslaunch piper_description display_gripper_urdf.launch
+roslaunch piper_description display_urdf.launch
 ```
 
 ### 1.2 piper gazebo仿真(无夹爪)
