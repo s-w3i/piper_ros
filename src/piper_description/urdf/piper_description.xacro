@@ -3,14 +3,14 @@
   name="piper"
   xmlns:xacro="http://ros.org/wiki/xacro">
 <!-- world -->
-  <link name="world"/>
+  <!-- <link name="world"/>
   <joint name="fixed_base_joint" type="fixed">
       <parent link="world"/>
       <child link="base_link"/>
-  </joint>
+  </joint> -->
 <!-- piper -->
 <link
-    name="base_link">
+    name="arm_base">
     <inertial>
       <origin
         xyz="-0.00473641164191482 2.56829134630247E-05 0.041451518036016"
@@ -96,14 +96,14 @@
       xyz="0 0 0.123"
       rpy="0 0 0" />
     <parent
-      link="base_link" />
+      link="arm_base" />
     <child
       link="link1" />
     <axis
       xyz="0 0 1" />
     <limit
       lower="-2.618"
-      upper="2.618"
+      upper="2.168"
       effort="100"
       velocity="5" />
   </joint>
@@ -505,7 +505,7 @@
     <limit
       lower="0"
       upper="0.035"
-      effort="100"
+      effort="10"
       velocity="1" />
   </joint>
   <link
@@ -563,7 +563,7 @@
     <limit
       lower="-0.035"
       upper="0"
-      effort="100"
+      effort="10"
       velocity="1" />
   </joint>
 

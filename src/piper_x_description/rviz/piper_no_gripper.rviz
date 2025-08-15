@@ -6,7 +6,6 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /RobotModel1
       Splitter Ratio: 0.5
     Tree Height: 549
   - Class: rviz/Selection
@@ -54,7 +53,7 @@ Visualization Manager:
       Value: true
     - Alpha: 1
       Class: rviz/RobotModel
-      Collision Enabled: true
+      Collision Enabled: false
       Enabled: true
       Links:
         All Links Enabled: true
@@ -62,7 +61,7 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        arm_base:
+        base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -92,32 +91,38 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        link6:
+        world:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
-        link7:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link8:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
       Update Interval: 0
       Value: true
-      Visual Enabled: false
+      Visual Enabled: true
+    - Class: rviz/TF
+      Enabled: false
+      Filter (blacklist): ""
+      Filter (whitelist): ""
+      Frame Timeout: 15
+      Frames:
+        All Enabled: true
+      Marker Alpha: 1
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        {}
+      Update Interval: 0
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: arm_base
+    Fixed Frame: base_link
     Frame Rate: 30
   Name: root
   Tools:
@@ -141,7 +146,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.985201120376587
+      Distance: 2.1567115783691406
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -157,9 +162,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.4603983163833618
+      Pitch: 0.785398006439209
       Target Frame: <Fixed Frame>
-      Yaw: 1.340397596359253
+      Yaw: 0.785398006439209
     Saved: ~
 Window Geometry:
   Displays:
@@ -177,5 +182,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1200
-  X: 72
+  X: 60
   Y: 27

@@ -54,7 +54,7 @@ Visualization Manager:
       Value: true
     - Alpha: 1
       Class: rviz/RobotModel
-      Collision Enabled: true
+      Collision Enabled: false
       Enabled: true
       Links:
         All Links Enabled: true
@@ -112,7 +112,7 @@ Visualization Manager:
       TF Prefix: ""
       Update Interval: 0
       Value: true
-      Visual Enabled: false
+      Visual Enabled: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -157,9 +157,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.4603983163833618
+      Pitch: 0.29039832949638367
       Target Frame: <Fixed Frame>
-      Yaw: 1.340397596359253
+      Yaw: 1.1703977584838867
     Saved: ~
 Window Geometry:
   Displays:
