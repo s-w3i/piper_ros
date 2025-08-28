@@ -203,7 +203,7 @@ class PiperRosNode(Node):
         rz = round(pos_data.yaw*1000*factor)
         if(self.GetEnableFlag()):
             self.piper.MotionCtrl_1(0x00, 0x00, 0x00)
-            self.piper.MotionCtrl_2(0x01, 0x02, 50)
+            self.piper.MotionCtrl_2(0x01, 0x00, 50)
             self.piper.EndPoseCtrl(x, y, z, rx, ry, rz)
             gripper = round(pos_data.gripper * 1000 * 1000)
             if pos_data.gripper > 80000:
@@ -212,7 +212,6 @@ class PiperRosNode(Node):
                 gripper = 0
             if self.gripper_exist:
                 self.piper.GripperCtrl(abs(gripper), 1000, 0x01, 0)
-            self.piper.MotionCtrl_2(0x01, 0x00, 50)
 
     def joint_callback(self, joint_data):
         """Callback function for joint angles
