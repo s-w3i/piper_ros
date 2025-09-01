@@ -1,10 +1,10 @@
 <package format="2">
-  <name>piper_x_description_v3</name>
+  <name>piper_x_description</name>
   <version>1.0.0</version>
   <description>
-    <p>URDF Description package for piper_x_description_v3</p>
+    <p>URDF Description package for piper_x_description</p>
     <p>This package contains configuration data, 3D models and launch files
-for piper_x_description_v3 robot</p>
+for piper_x_description robot</p>
   </description>
   <author>TODO</author>
   <maintainer email="TODO@email.com" />
