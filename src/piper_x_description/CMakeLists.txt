@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
 
-project(piper_x_description_v3)
+project(piper_x_description)
 
 find_package(catkin REQUIRED)
 
