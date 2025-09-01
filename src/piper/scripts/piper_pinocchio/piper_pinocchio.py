@@ -64,7 +64,7 @@ class Arm_IK:
         )
 
         self.geom_model = pin.buildGeomFromUrdf(self.robot.model, urdf_path, pin.GeometryType.COLLISION)
-        for i in range(4, 9):
+        for i in range(4, 10):
             for j in range(0, 3):
                 self.geom_model.addCollisionPair(pin.CollisionPair(i, j))
         self.geometry_data = pin.GeometryData(self.geom_model)
@@ -135,7 +135,16 @@ class Arm_IK:
         self.var_q = self.opti.variable(self.reduced_robot.model.nq)
         # self.var_q_last = self.opti.parameter(self.reduced_robot.model.nq)   # for smooth
         self.param_tf = self.opti.parameter(4, 4)
-        self.totalcost = casadi.sumsqr(self.error(self.var_q, self.param_tf))
+        # self.totalcost = casadi.sumsqr(self.error(self.var_q, self.param_tf))
+        error_vec = self.error(self.var_q, self.param_tf)
+        pos_error = error_vec[:3]  # 取前3个值为位置误差
+        ori_error = error_vec[3:]  # 取后3个值为姿态误差
+        # 设置位置和姿态的权重
+        weight_position = 1.0  # 位置权重
+        weight_orientation = 0.1  # 姿态权重
+        # 总成本函数
+        self.totalcost = casadi.sumsqr(weight_position * pos_error) + casadi.sumsqr(weight_orientation * ori_error)
+        # 正则化项
         self.regularization = casadi.sumsqr(self.var_q)
         # self.smooth_cost = casadi.sumsqr(self.var_q - self.var_q_last) # for smooth
 
@@ -204,7 +213,7 @@ class Arm_IK:
         except Exception as e:
             print(f"ERROR in convergence, plotting debug info.{e}")
             # sol_q = self.opti.debug.value(self.var_q)   # return original value
-            return sol_q, '', False
+            return None, '', False
 
     def check_self_collision(self, q, gripper=np.array([0, 0])):
         pin.forwardKinematics(self.robot.model, self.robot.data, np.concatenate([q, gripper], axis=0))
@@ -215,7 +224,7 @@ class Arm_IK:
 
     def get_ik_solution(self, x,y,z,roll,pitch,yaw):
         
-        q = quaternion_from_euler(roll, pitch, yaw, axes='sxyz')
+        q = quaternion_from_euler(roll, pitch, yaw)
         target = pin.SE3(
             pin.Quaternion(q[3], q[0], q[1], q[2]),
             np.array([x, y, z]),
