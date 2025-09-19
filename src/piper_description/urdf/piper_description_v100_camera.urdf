@@ -23,9 +23,6 @@
         <geometry>
             <mesh filename="package://piper_description/meshes/dae/base_link.dae" />
         </geometry>
-        <material name="">
-            <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-        </material>
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
@@ -54,9 +51,6 @@
         <geometry>
             <mesh filename="package://piper_description/meshes/dae/link1.dae" />
         </geometry>
-        <material name="">
-            <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-        </material>
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 1.5708" />
@@ -92,9 +86,6 @@
         <geometry>
             <mesh filename="package://piper_description/meshes/dae/link2.dae" />
         </geometry>
-        <material name="">
-            <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-        </material>
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0.1" />
@@ -130,9 +121,6 @@
         <geometry>
             <mesh filename="package://piper_description/meshes/dae/link3.dae" />
         </geometry>
-        <material name="">
-            <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-        </material>
         </visual>
         <collision>
         <origin xyz="0 0 0" rpy="0 0 -1.75" />
@@ -168,9 +156,6 @@
         <geometry>
             <mesh filename="package://piper_description/meshes/dae/link4.dae" />
         </geometry>
-        <material name="">
-            <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-        </material>
         </visual>
         <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -206,9 +191,7 @@
         <geometry>
             <mesh filename="package://piper_description/meshes/dae/link5.dae" />
         </geometry>
-        <material name="">
-            <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-        </material>
+
         </visual>
         <collision>
         <origin xyz="0 0 0" rpy="0 0 -3.14" />
@@ -244,9 +227,6 @@
         <geometry>
             <mesh filename="package://piper_description/meshes/dae/camera_v3.dae"/>
         </geometry>
-        <material name="">
-            <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-        </material>
         </visual>
         <collision>
         <origin xyz="-0.002 -0.008 0" rpy="-1.57 0 0" />
@@ -282,9 +262,6 @@
         <geometry>
             <mesh filename="package://piper_description/meshes/dae/link7.dae" />
         </geometry>
-        <material name="">
-            <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-        </material>
         </visual>
         <collision>
         <origin xyz="-0.001 0 0.0003" rpy="0 3.14 0" />
@@ -320,9 +297,6 @@
         <geometry>
             <mesh filename="package://piper_description/meshes/dae/link8.dae" />
         </geometry>
-        <material name="">
-            <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-        </material>
         </visual>
         <collision>
         <origin xyz="-0.001 0 0.0003" rpy="3.14 0 0" />
@@ -362,11 +336,6 @@
       <geometry>
           <box size="0.02 0.05 0.02"/>
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="1 1 1 1" />
-      </material>
     </visual>
     <collision>
       <origin
