@@ -126,11 +126,6 @@
         <mesh
           filename="package://piper_x_description/meshes/dae/J2.dae" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.69804 0.69804 0.69804 0.875" />
-      </material>
     </visual>
     <collision>
       <origin
