@@ -66,12 +66,12 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        base_link:
+        arm_base:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        gripper_base:
+        hand_cam:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -116,10 +116,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        world:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
       Mass Properties:
         Inertia: false
         Mass: false
@@ -131,7 +127,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: base_link
+    Fixed Frame: arm_base
     Frame Rate: 30
   Name: root
   Tools:
@@ -192,7 +188,7 @@ Visualization Manager:
       Pitch: 0.8353979587554932
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.863574504852295
+      Yaw: 5.858574390411377
     Saved: ~
 Window Geometry:
   Displays:
