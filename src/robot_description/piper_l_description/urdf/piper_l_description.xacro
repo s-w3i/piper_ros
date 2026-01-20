@@ -44,7 +44,7 @@
     </collision>
   </link>
   <link
-    name="Link1">
+    name="link1">
     <inertial>
       <origin xyz="0.00201 -0.00220 -0.02127" rpy="0 0 0"/>
       <mass value="0.11"/>
@@ -89,13 +89,13 @@
     <parent
       link="base_link" />
     <child
-      link="Link1" />
+      link="link1" />
     <axis
       xyz="0 0 1" />
     <limit lower="-2.618" upper="2.618" effort="100" velocity="3" />
   </joint>
   <link
-    name="Link2">
+    name="link2">
     <inertial>
       <origin xyz="0.25986 -0.00913 0.00237" rpy="0 0 0"/>
       <mass value="1.16"/>
@@ -138,15 +138,15 @@
       xyz="0 0 0"
       rpy="1.5708 -0.1745 3.1416" />
     <parent
-      link="Link1" />
+      link="link1" />
     <child
-      link="Link2" />
+      link="link2" />
     <axis
       xyz="0 0 1" />
     <limit lower="0" upper="3.14" effort="100" velocity="3" />
   </joint>
   <link
-    name="Link3">
+    name="link3">
     <inertial>
       <origin xyz="-0.00726 -0.19029 -0.00045" rpy="0 0 0"/>
       <mass value="0.59"/>
@@ -189,15 +189,15 @@
       xyz="0.33823 0 0"
       rpy="0 0 -1.8325" />
     <parent
-      link="Link2" />
+      link="link2" />
     <child
-      link="Link3" />
+      link="link3" />
     <axis
       xyz="0 0 1" />
     <limit lower="-2.697" upper="0" effort="100" velocity="3" />
   </joint>
   <link
-    name="Link4">
+    name="link4">
     <inertial>
       <origin xyz="0.00054 -0.00162 -0.00399" rpy="0 0 0"/>
       <mass value="0.37"/>
@@ -240,15 +240,15 @@
       xyz="0 -0.3215 0"
       rpy="1.5708 0 0.0" />
     <parent
-      link="Link3" />
+      link="link3" />
     <child
-      link="Link4" />
+      link="link4" />
     <axis
       xyz="0 0 1" />
     <limit lower="-1.832" upper="1.832" effort="100" velocity="3" />
   </joint>
   <link
-    name="Link5">
+    name="link5">
     <inertial>
       <origin xyz="0.0002 -0.06142 -0.00257" rpy="0 0 0"/>
       <mass value="0.38"/>
@@ -291,15 +291,15 @@
       xyz="0 0 0"
       rpy="-1.5708 0.0 0" />
     <parent
-      link="Link4" />
+      link="link4" />
     <child
-      link="Link5" />
+      link="link5" />
     <axis
       xyz="0 0 -1" />
     <limit lower="-1.22" upper="1.22" effort="100" velocity="3" />
   </joint>
   <link
-    name="Link6">
+    name="link6">
     <inertial>
       <origin
         xyz="-3.49720252756924E-15 -3.47851379593264E-06 -0.00315807577104896"
@@ -345,15 +345,15 @@
       xyz="0 -0.091 0"
       rpy="1.5708 0 0" />
     <parent
-      link="Link5" />
+      link="link5" />
     <child
-      link="Link6" />
+      link="link6" />
     <axis
       xyz="0 0 1" />
     <limit lower="-3.14" upper="3.14" effort="100" velocity="3" />
   </joint>
 
-<link name="Link7">
+<link name="link7">
   <inertial>
   <origin
       xyz="0.000277816920932317 -0.0467673824063769 -0.00921030054508036"
@@ -384,13 +384,13 @@
 
     <joint name="joint7" type="prismatic">
         <origin xyz="0 0 0.13503" rpy="1.5708 0 0" />
-        <parent link="Link6" />
-        <child link="Link7" />
+        <parent link="link6" />
+        <child link="link7" />
         <axis xyz="0 0 -1" />
         <limit lower="0" upper="0.05" effort="100" velocity="1" />
     </joint>
 
-    <link name="Link8">
+    <link name="link8">
         <inertial>
         <origin
             xyz="0.000277816920932317 0.0467673824063769 -0.00921030054508036"
@@ -422,8 +422,8 @@
     </link>
     <joint name="joint8" type="prismatic">
         <origin xyz="0 0 0.13503" rpy="-1.5708 0 0" />
-        <parent link="Link6" />
-        <child link="Link8" />
+        <parent link="link6" />
+        <child link="link8" />
         <axis xyz="0 0 1" />
         <limit lower="-0.05" upper="0" effort="100" velocity="1" />
     </joint>
@@ -449,7 +449,7 @@
     </link>
     <joint name="camera_stand_joint" type="fixed">
         <origin xyz="-0.034 -0.002 0.023" rpy="0 0 0"/>
-        <parent link="Link6"/>
+        <parent link="link6"/>
         <child link="camera_stand_link"/>
         <axis xyz="0.0 0.0 0.0"/>
         <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>

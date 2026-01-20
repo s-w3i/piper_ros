@@ -5,18 +5,18 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="piper_x_camera">
 
 <xacro:include filename="$(find realsense2_description)/urdf/test_d435_camera.urdf.xacro" />
-<link
+  <link
     name="base_link">
   <inertial>
     <origin xyz="-0.00347 -0.00012 0.04283" rpy="0 0 0"/>
     <mass value="1.07"/>
-    <inertia 
-        ixx="0.00099887" 
-        ixy="0.00000194" 
-        ixz="0.00000613" 
-        iyy="0.00112771" 
-        iyz="0.00000201" 
-        izz="0.00096552" />
+    <inertia
+      ixx="0.00298745"
+      ixy="0.00000369"
+      ixz="0.00016646"
+      iyy="0.00312688"
+      iyz="0.00000832"
+      izz="0.00093042"/>
   </inertial>
     <visual>
       <origin
@@ -24,7 +24,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://piper_x_description/meshes/dae/base_Link.dae" />
+          filename="package://piper_x_description/meshes/dae/base_link.dae" />
       </geometry>
       <material
         name="">
@@ -38,19 +38,23 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://piper_x_description/meshes/dae/base_Link.dae" />
+          filename="package://piper_x_description/meshes/dae/base_link.dae" />
       </geometry>
     </collision>
   </link>
   <link
-    name="Link1">
+    name="link1">
     <inertial>
-      <origin xyz="0.00065 0.00006 -0.00325" rpy="0 0 0" />
-      <mass value="0.71" />
-      <inertia 
-        ixx="0.00050503" ixy="0.00000291" ixz="0.00000889" 
-        iyy="0.00040309" iyz="0.00000225" 
-        izz="0.00045932" />
+      <origin xyz="0.00065 0.00006 -0.00325" rpy="0 0 0"/>
+      <mass
+        value="0.71" />
+      <inertia
+        ixx="0.00051254"
+        ixy="0.00000294"
+        ixz="0.00001039"
+        iyy="0.00041089"
+        iyz="0.00000240"
+        izz="0.00045962"/>
     </inertial>
     <visual>
       <origin
@@ -85,7 +89,7 @@
     <parent
       link="base_link" />
     <child
-      link="Link1" />
+      link="link1" />
     <axis
       xyz="0 0 1" />
     <limit
@@ -95,17 +99,17 @@
       velocity="10" />
   </joint>
   <link
-    name="Link2">
+    name="link2">
     <inertial>
       <origin xyz="0.21854 -0.00853 0.00234" rpy="0 0 0"/>
       <mass value="1.16"/>
-    <inertia 
-        ixx="0.0010067" 
-        ixy="0.0003653" 
-        ixz="0.00004563" 
-        iyy="0.01202556" 
-        iyz="0.00001515" 
-        izz="0.01193901" />
+      <inertia
+        ixx="0.00109788"
+        ixy="0.00180610"
+        ixz="0.00055040"
+        iyy="0.06763354"
+        iyz="0.00000813"
+        izz="0.06762540"/>
     </inertial>
     <visual>
       <origin
@@ -133,9 +137,9 @@
       xyz="0 0 0"
       rpy="1.5708 -0.13586 3.1416" />
     <parent
-      link="Link1" />
+      link="link1" />
     <child
-      link="Link2" />
+      link="link2" />
     <axis
       xyz="0 0 1" />
     <limit
@@ -145,17 +149,17 @@
       velocity="10" />
   </joint>
   <link
-    name="Link3">
+    name="link3">
     <inertial>
       <origin xyz="0.20190 -0.00415 -0.00114" rpy="0 0 0"/>
       <mass value="0.67"/>
-    <inertia 
-        ixx="0.00032229" 
-        ixy="0.00029258" 
-        ixz="0.00001566" 
-        iyy="0.00628179" 
-        iyz="0.00000371" 
-        izz="0.00623643" />
+      <inertia
+        ixx="0.00033471"
+        ixy="0.00026891"
+        ixz="0.00013918"
+        iyy="0.03360411"
+        iyz="0.00000052"
+        izz="0.03356941"/>
     </inertial>
     <visual>
       <origin
@@ -188,9 +192,9 @@
       xyz="0.28503 0 0"
       rpy="0 0 2.8377" />
     <parent
-      link="Link2" />
+      link="link2" />
     <child
-      link="Link3" />
+      link="link3" />
     <axis
       xyz="0 0 1" />
     <limit
@@ -200,17 +204,17 @@
       velocity="10" />
   </joint>
   <link
-    name="Link4">
+    name="link4">
     <inertial>
       <origin xyz="0.06593 -0.04751 -0.00274" rpy="0 0 0"/>
       <mass value="0.4"/>
-    <inertia 
-        ixx="0.00030498" 
-        ixy="0.00014139" 
-        ixz="0.00005955" 
-        iyy="0.00036923" 
-        iyz="0.00004930" 
-        izz="0.00046330" />
+      <inertia
+        ixx="0.00120173"
+        ixy="0.00138165"
+        ixz="0.00001187"
+        iyy="0.00209324"
+        iyz="0.00000217"
+        izz="0.00307814"/>
     </inertial>
     <visual>
       <origin
@@ -243,9 +247,9 @@
       xyz="0.27264 0 0"
       rpy="0 0 0.075129" />
     <parent
-      link="Link3" />
+      link="link3" />
     <child
-      link="Link4" />
+      link="link4" />
     <axis
       xyz="0 0 1" />
     <limit
@@ -255,17 +259,17 @@
       velocity="10" />
   </joint>
   <link
-    name="Link5">
+    name="link5">
     <inertial>
-      <origin xyz="0.00005 -0.01299 -0.00417" rpy="0 0 0"/>
+      <origin xyz="0.00005 0.0 -0.00417" rpy="0 0 0"/>
       <mass value="0.35"/>
-    <inertia 
-        ixx="0.00016058" 
-        ixy="0.00000042" 
-        ixz="0.00000003" 
-        iyy="0.00017124" 
-        iyz="0.00001836" 
-        izz="0.00013440" />
+      <inertia
+        ixx="0.00022660"
+        ixy="0.00000019"
+        ixz="0.00000005"
+        iyy="0.00017740"
+        iyz="0.00000085"
+        izz="0.00019425"/>
     </inertial>
     <visual>
       <origin
@@ -298,9 +302,9 @@
       xyz="0.076857 0.00062395 0"
       rpy="-1.5708 0 0" />
     <parent
-      link="Link4" />
+      link="link4" />
     <child
-      link="Link5" />
+      link="link5" />
     <axis
       xyz="0 0 1" />
     <limit
@@ -310,17 +314,73 @@
       velocity="10" />
   </joint>
   <link
-    name="Link6">
+    name="link6">
     <inertial>
-      <origin xyz="-0.00006 -0.00003 0.04448" rpy="0 0 0"/>
+      <origin xyz="0 0 -0.00351" rpy="0 0 0"/>
+      <mass value="0.007"/>
+      <inertia
+        ixx="0.00000064"
+        ixy="0"
+        ixz="0"
+        iyy="0.00000064"
+        iyz="0"
+        izz="0.00000106"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 -0.035"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://piper_x_description/meshes/Link6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 -0.035"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://piper_x_description/meshes/Link6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint6"
+    type="revolute">
+    <origin
+      xyz="0.035 0 0"
+      rpy="1.5708 0 1.5708" />
+    <parent
+      link="link5" />
+    <child
+      link="link6" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="10" />
+  </joint>
+
+  <link
+    name="gripper_base">
+    <inertial>
+      <origin xyz="-0.00006 -0.00003 0.0321436689908876" rpy="0 0 0"/>
       <mass value="0.52"/>
-    <inertia 
-        ixx="0.00048224" 
-        ixy="0.00000048" 
-        ixz="0.00000136" 
-        iyy="0.00059105" 
-        iyz="0.00000208" 
-        izz="0.00030728" />
+      <inertia
+        ixx="0.00151445"
+        ixy="0.00000048"
+        ixz="0.00000003"
+        iyy="0.00162326"
+        iyz="0.00000277"
+        izz="0.00030728"/>
     </inertial>
     <visual>
       <origin
@@ -346,25 +406,20 @@
       </geometry>
     </collision>
   </link>
+
   <joint
-    name="joint6"
-    type="revolute">
+    name="joint6_to_gripper_base"
+    type="fixed">
     <origin
-      xyz="0.035 0 0"
-      rpy="1.5708 0 1.5708" />
+      xyz="0 0 0"
+      rpy="0 0 0" />
     <parent
-      link="Link5" />
+      link="link6" />
     <child
-      link="Link6" />
-    <axis
-      xyz="0 0 1" />
-    <limit
-      lower="-3.14"
-      upper="3.14"
-      effort="100"
-      velocity="10" />
+      link="gripper_base" />
   </joint>
-  <link name="Link7">
+
+  <link name="link7">
     <inertial>
     <origin
         xyz="0.000277816920932317 -0.0467673824063769 -0.00921030054508036"
@@ -395,13 +450,13 @@
 
     <joint name="joint7" type="prismatic">
         <origin xyz="0 0 0.13503" rpy="1.5708 0 1.5708" />
-        <parent link="Link6" />
-        <child link="Link7" />
+        <parent link="gripper_base" />
+        <child link="link7" />
         <axis xyz="0 0 -1" />
         <limit lower="0" upper="0.05" effort="100" velocity="1" />
     </joint>
 
-    <link name="Link8">
+    <link name="link8">
         <inertial>
         <origin
             xyz="0.000277816920932317 0.0467673824063769 -0.00921030054508036"
@@ -433,8 +488,8 @@
     </link>
     <joint name="joint8" type="prismatic">
         <origin xyz="0 0 0.13503" rpy="-1.5708 0 1.5708" />
-        <parent link="Link6" />
-        <child link="Link8" />
+        <parent link="gripper_base" />
+        <child link="link8" />
         <axis xyz="0 0 1" />
         <limit lower="-0.05" upper="0" effort="100" velocity="1" />
     </joint>
@@ -460,7 +515,7 @@
     </link>
     <joint name="camera_stand_joint" type="fixed">
         <origin xyz="0.001 -0.036 0.022" rpy="1.57 3.14 0.0"/>
-        <parent link="Link6"/>
+        <parent link="link6"/>
         <child link="camera_stand_link"/>
         <axis xyz="0.0 0.0 0.0"/>
         <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>
@@ -468,7 +523,7 @@
 
     <joint name="d435_camera_joint" type="fixed">
         <origin xyz="0.029 -0.069 0.022" rpy="0.0 -1.22 1.57"/>
-        <parent link="Link6"/>
+        <parent link="link6"/>
         <child link="d435_camera_link"/>
         <axis xyz="0.0 0.0 0.0"/>
         <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>
