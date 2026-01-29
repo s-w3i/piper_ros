@@ -223,15 +223,15 @@
             izz="2.479e-05"/>
         </inertial>
         <visual>
-            <origin xyz="0 0 0" rpy="-1.57 -1.57 -1.57"/>
+            <origin xyz="0 0 0" rpy="-1.57 0 -1.57"/>
             <geometry>
-                <mesh filename="package://nero_description/meshes/stand_v1.dae"/>
+                <mesh filename="package://nero_description/meshes/stand_v2.dae"/>
             </geometry>
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://nero_description/meshes/stand_v1.dae"/>
+                <mesh filename="package://nero_description/meshes/stand_v2.dae"/>
             </geometry>
         </collision>
     </link>
