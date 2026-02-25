@@ -12,6 +12,15 @@ Test:
 |---|---|
 |![humble](https://img.shields.io/badge/ros-humble-blue.svg)|![Pass](https://img.shields.io/badge/Pass-blue.svg)|
 
+```shell
+git clone https://github.com/s-w3i/piper_ros
+```
+
+```shell
+cd piper_ros
+git checkout humble
+```
+
 ## 0 Note the URDF version
 
 DH parameters before S-V1.6-3 firmware version are obtained by taking the contact limit of each joint as the initial coordinate
