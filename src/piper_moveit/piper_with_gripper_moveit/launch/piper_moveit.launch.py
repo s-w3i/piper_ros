@@ -1,16 +1,15 @@
 from moveit_configs_utils import MoveItConfigsBuilder
-from moveit_configs_utils.launches import generate_moveit_rviz_launch
 
 from launch import LaunchDescription
 from launch.actions import (
     DeclareLaunchArgument,
-    IncludeLaunchDescription,
 )
 from moveit_configs_utils.launch_utils import (
     add_debuggable_node,
     DeclareBooleanLaunchArg,
 )
 from launch.substitutions import LaunchConfiguration
+from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
 
 
@@ -18,12 +17,42 @@ def generate_launch_description():
     moveit_config = MoveItConfigsBuilder("piper", package_name="piper_with_gripper_moveit").to_moveit_configs()
 
     ld = LaunchDescription()
+    # Build a complete joint state stream for MoveIt:
+    # - consumes raw /joint_states
+    # - publishes /joint_states_complete
+    # - synthesizes joint8 from joint7 (opposite motion)
+    my_generate_joint_state_augmenter_launch(ld, moveit_config)
 
     # 启动move_group
     my_generate_move_group_launch(ld, moveit_config)
     # 启动rviz
     my_generate_moveit_rviz_launch(ld, moveit_config)
 
+    return ld
+
+
+def my_generate_joint_state_augmenter_launch(ld, moveit_config):
+    ld.add_action(
+        Node(
+            package="joint_state_publisher",
+            executable="joint_state_publisher",
+            name="joint_state_augmenter",
+            output="screen",
+            parameters=[
+                moveit_config.robot_description,
+                {
+                    "rate": 200,
+                    "source_list": ["/joint_states"],
+                    "use_mimic_tags": True,
+                    "dependent_joints.joint8.parent": "joint7",
+                    "dependent_joints.joint8.factor": -1.0,
+                    "dependent_joints.joint8.offset": 0.0,
+                    "use_sim_time": True,
+                },
+            ],
+            remappings=[("joint_states", "/joint_states_complete")],
+        )
+    )
     return ld
 
 
@@ -44,6 +73,41 @@ def my_generate_move_group_launch(ld, moveit_config):
     # do not copy dynamics information from /joint_states to internal robot monitoring
     # default to false, because almost nothing in move_group relies on this information
     ld.add_action(DeclareBooleanLaunchArg("monitor_dynamics", default_value=False))
+    ld.add_action(
+        DeclareLaunchArgument(
+            "dc1_point_cloud_topic",
+            default_value="/camera/depth/points",
+            description="PointCloud2 topic from DaBai DC1 for MoveIt occupancy mapping",
+        )
+    )
+    ld.add_action(
+        DeclareLaunchArgument(
+            "dc1_filtered_cloud_topic",
+            default_value="/moveit/filtered_cloud",
+            description="Filtered cloud output topic published by MoveIt",
+        )
+    )
+    ld.add_action(
+        DeclareLaunchArgument(
+            "dc1_max_range",
+            default_value="3.0",
+            description="Maximum distance (m) used by MoveIt occupancy mapping",
+        )
+    )
+    ld.add_action(
+        DeclareLaunchArgument(
+            "octomap_frame",
+            default_value="base_link",
+            description="Planning frame used by MoveIt octomap",
+        )
+    )
+    ld.add_action(
+        DeclareLaunchArgument(
+            "octomap_resolution",
+            default_value="0.02",
+            description="Octomap voxel resolution in meters",
+        )
+    )
 
     should_publish = LaunchConfiguration("publish_monitored_planning_scene")
 
@@ -65,9 +129,30 @@ def my_generate_move_group_launch(ld, moveit_config):
         "monitor_dynamics": False,
     }
 
+    sensor_configuration = {
+        "sensors": ["dabai_dc1_pointcloud"],
+        "dabai_dc1_pointcloud": {
+            "sensor_plugin": "occupancy_map_monitor/PointCloudOctomapUpdater",
+            "point_cloud_topic": LaunchConfiguration("dc1_point_cloud_topic"),
+            "max_range": ParameterValue(
+                LaunchConfiguration("dc1_max_range"), value_type=float
+            ),
+            "point_subsample": 1,
+            "padding_offset": 0.02,
+            "padding_scale": 1.0,
+            "max_update_rate": 5.0,
+            "filtered_cloud_topic": LaunchConfiguration("dc1_filtered_cloud_topic"),
+        },
+        "octomap_frame": LaunchConfiguration("octomap_frame"),
+        "octomap_resolution": ParameterValue(
+            LaunchConfiguration("octomap_resolution"), value_type=float
+        ),
+    }
+
     move_group_params = [
         moveit_config.to_dict(),
         move_group_configuration,
+        sensor_configuration,
     ]
     move_group_params.append({"use_sim_time": True})
 
@@ -78,6 +163,7 @@ def my_generate_move_group_launch(ld, moveit_config):
         commands_file=str(moveit_config.package_path / "launch" / "gdb_settings.gdb"),
         output="screen",
         parameters=move_group_params,
+        remappings=[("joint_states", "/joint_states_complete")],
         extra_debug_args=["--debug"],
         # Set the display variable, in case OpenGL code is used internally
         additional_env={"DISPLAY": ":0"},
