@@ -15,7 +15,7 @@ def generate_launch_description():
     # Declare the launch arguments
     can_port_arg = DeclareLaunchArgument(
         'can_port',
-        default_value='can0',
+        default_value='can_piper',
         description='CAN port to be used by the Piper node.'
     )
     auto_enable_arg = DeclareLaunchArgument(

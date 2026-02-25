@@ -1,0 +1,1 @@
+cmd_/home/usern/piper_ros/tools/gs_usb_module/Module.symvers := sed 's/\.ko$$/\.o/' /home/usern/piper_ros/tools/gs_usb_module/modules.order | scripts/mod/modpost -m   -o /home/usern/piper_ros/tools/gs_usb_module/Module.symvers -e -i Module.symvers   -T -

@@ -331,8 +331,8 @@
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-2.0944"
-      upper="2.0944"
+      lower="0.0"
+      upper="3.14159"
       effort="100"
       velocity="3" />
   </joint>
@@ -503,6 +503,60 @@
       effort="10"
       velocity="1" />
   </joint>
+
+  <link
+    name="camera_link">
+    <inertial>
+      <origin
+        xyz="0.0 0.0 0.0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0067926" />
+      <inertia
+        ixx="3.7811E-05"
+        ixy="2.2861E-18"
+        ixz="2.2446E-19"
+        iyy="9.4061E-05"
+        iyz="6.1172E-06"
+        izz="0.00012345" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+          <box size="0.02 0.05 0.02"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 1.57 0" />
+      <geometry>
+        <box size="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="hand_camera_joint"
+    type="fixed">
+    <origin
+      xyz="0.07 0.0 0.0"
+      rpy="0.0 -1.57 0.0" />
+    <parent
+      link="link6" />
+    <child
+      link="camera_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
 
 <!-- controller -->
   <xacro:macro name="transmission_block" params="tran_name joint_name motor_name">

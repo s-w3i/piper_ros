@@ -1,0 +1,1 @@
+/home/usern/piper_ros/tools/gs_usb_module/gs_usb.o

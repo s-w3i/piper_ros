@@ -1,0 +1,1 @@
+cmd_/home/usern/piper_ros/tools/gs_usb_module/gs_usb.mod := printf '%s\n'   gs_usb.o | awk '!x[$$0]++ { print("/home/usern/piper_ros/tools/gs_usb_module/"$$0) }' > /home/usern/piper_ros/tools/gs_usb_module/gs_usb.mod
