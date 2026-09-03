@@ -387,6 +387,39 @@
     <child
       link="gripper_base" />
   </joint>
+
+  <!-- Tool center point at the center of the gripper opening. -->
+  <link name="gripper_tcp" />
+  <joint name="gripper_base_to_tcp" type="fixed">
+    <origin xyz="0 0 0.1000" rpy="0 -1.57 0" />
+    <parent link="gripper_base" />
+    <child link="gripper_tcp" />
+  </joint>
+
+  <!-- Lightweight Dabai DC1 case; the camera driver publishes its optical frames. -->
+  <link name="gripper_camera_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.57 0 1.57" />
+      <geometry>
+        <box size="0.0596 0.0174 0.0111" />
+      </geometry>
+      <material name="camera_case">
+        <color rgba="0.15 0.15 0.15 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.57 0 1.57" />
+      <geometry>
+        <box size="0.0596 0.0174 0.0111" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="gripper_camera_joint" type="fixed">
+    <origin xyz="-0.07 0 0.05" rpy="0 -1.25 0" />
+    <parent link="gripper_base" />
+    <child link="gripper_camera_link" />
+  </joint>
+
   <link
     name="link7">
     <inertial>
